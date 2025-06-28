@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Thông tin cá nhân{% endblock %}
+{% block content %}
+<h2>Thông tin cá nhân</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr><th>Tên</th><td>{{ user.name }}</td></tr>
+        <tr><th>Số CMND</th><td>{{ user.cmnd }}</td></tr>
+        <tr><th>Địa chỉ</th><td>{{ user.diachi }}</td></tr>
+        <tr><th>Số tài khoản</th><td>{{ user.stk_nganhang }}</td></tr>
+        <tr><th>Số BHXH</th><td>{{ user.so_bhxh }}</td></tr>
+    </table>
+</div>
+<a href="{{ url_for('update') }}" class="btn btn-primary">Cập nhật thông tin</a>
+<a href="{{ url_for('change_password') }}" class="btn btn-info">Đổi mật khẩu</a>
+<a href="{{ url_for('delete') }}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản?')">Xóa tài khoản</a>
+{% endblock %}

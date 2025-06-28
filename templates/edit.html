@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Cập nhật thông tin{% endblock %}
+{% block content %}
+<h2>Cập nhật thông tin</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.name.label }} {{ form.name(class="form-control") }}
+        {% for error in form.name.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form.cmnd.label }} {{ form.cmnd(class="form-control") }}
+        {% for error in form.cmnd.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form.diachi.label }} {{ form.diachi(class="form-control") }}
+        {% for error in form.diachi.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form.stk_nganhang.label }} {{ form.stk_nganhang(class="form-control") }}
+        {% for error in form.stk_nganhang.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form.so_bhxh.label }} {{ form.so_bhxh(class="form-control") }}
+        {% for error in form.so_bhxh.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </div>
+    {{ form.submit(class="btn btn-success") }}
+</form>
+{% endblock %}

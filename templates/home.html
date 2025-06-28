@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Trang chủ{% endblock %}
+{% block content %}
+<h2>Chào mừng đến hệ thống bảo mật!</h2>
+<a href="{{ url_for('register') }}" class="btn btn-primary">Đăng ký</a>
+<a href="{{ url_for('login') }}" class="btn btn-success">Đăng nhập</a>
+{% endblock %}
